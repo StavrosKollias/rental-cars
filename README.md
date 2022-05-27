@@ -6,21 +6,21 @@ Rental cars Technical Challenge Booking.com
 
 # Installation
 
--   'yarn install' or 'npm install'
+- 'yarn install' or 'npm install'
 
 # Compile
 
--   'yarn dev' or 'npm run dev'
+- 'yarn dev' or 'npm run dev'
 
 # Unit testing
 
--   'yarn test' or 'npm run test'
--   'yarn commit-test' or 'npm run commit-test'
+- 'yarn test' or 'npm run test'
+- 'yarn test-watch' or 'npm run test-watch'
 
 # Build
 
--   'yarn build' or 'npm run build'
+- 'yarn build' or 'npm run build'
 
 # Serve the Build in local
 
--   'yarn start' or 'npm run start'
+- 'yarn start' or 'npm run start'
