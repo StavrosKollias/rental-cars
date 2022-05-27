@@ -11,7 +11,8 @@
     "test": "jest --coverage --verbose ./",
     "commit-test": "jest --runInBand",
     "build": "cross-env NODE_ENV=production webpack",
-    "start": "serve build"
+    "start": "serve build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -67,7 +68,8 @@
     "@types/react": "^18.0.9",
     "babel-loader": "^8.0.6",
     "babel-plugin-react-remove-properties": "^0.3.0",
-    "typescript-transformer-jsx-remove-attributes": "^1.0.6"
+    "typescript-transformer-jsx-remove-attributes": "^1.0.6",
+    "husky": "^8.0.0"
   },
   "husky": {
     "hooks": {
