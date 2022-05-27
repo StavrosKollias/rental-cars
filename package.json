@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "test": "jest --runInBand",
-    "test-watch": "jest --coverage --verbose ./ --watch",
+    "test-verbose": "jest --coverage --verbose ./",
+    "test-watch": "jest --watch",
     "build": "cross-env NODE_ENV=production webpack",
     "start": "serve build",
     "prepare": "husky install"
@@ -25,7 +26,6 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
-    "husky": "^8.0.1",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "jsdom": "^19.0.0",

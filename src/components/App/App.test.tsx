@@ -1,6 +1,6 @@
 import React from 'react'
 import { App } from './'
-import * as utils from '../../../test_utils/utils'
+import * as utils from '../../test_utils/utils'
 
 describe('App testing', () => {
   test('Component Renders with no error', () => {

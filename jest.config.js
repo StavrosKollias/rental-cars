@@ -2,7 +2,7 @@ module.exports = {
   // eslint-disable-next-line linebreak-style
   roots: ['<rootDir>'],
   setupFilesAfterEnv: [
-    '<rootDir>/test_utils/setupTests.ts',
+    '<rootDir>/src/test_utils/setupTests.ts',
     '@testing-library/jest-dom/extend-expect',
     '@testing-library/react',
   ],
