@@ -1,22 +1,18 @@
 import React from 'react'
-import { useSearchContext } from 'src/contexts/SearchContext'
+import { ISearchLocationProps } from './'
+import { SearchIcon } from '../../assets/Icons'
 import { Input } from '../Shared/Input'
 
-export const SearchLocation: React.FC = () => {
-  const { selectedLocation, setSelectedLocation, content } = useSearchContext()
-
-  const hanglechangeIpnutLocation = (value: string) => {
-    console.log(value)
+export const SearchLocation: React.FC<ISearchLocationProps> = ({ selectedLocation, setSelectedLocation, content }) => {
+  const hangleChangeIpnutLocation = (value: string) => {
     setSelectedLocation(value)
   }
   return (
     <div className="search-location" data-testid="search-location">
-      <Input
-        {...content.inputPickUpLocation.input}
-        label={content.inputPickUpLocation.label}
-        value={selectedLocation}
-        onChange={hanglechangeIpnutLocation}
-      />
+      <span data-testid="search-icon-container">
+        <SearchIcon />
+      </span>
+      <Input {...content.input} label={content.label} value={selectedLocation} onChange={hangleChangeIpnutLocation} />
     </div>
   )
 }

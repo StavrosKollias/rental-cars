@@ -14,7 +14,7 @@ export const Input: React.FC<IInputProps> = ({
   onChange,
 }) => {
   return (
-    <div className={`${className}-container`} data-testid="search-input__container">
+    <div className={`${className}-container`} data-testid="search-input-container">
       <Label {...label} />
       <input
         data-testid="search-input"

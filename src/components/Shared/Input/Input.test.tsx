@@ -23,13 +23,13 @@ const InputProps: IInputProps = {
 describe('Input', () => {
   test('Component renders with no errors', () => {
     const { getByTestId } = utils.render(<Input {...InputProps} />)
-    const inputContainer = getByTestId('search-input__container')
+    const inputContainer = getByTestId('search-input-container')
     expect(inputContainer).not.toBeNull()
   })
 
   test('Component renders with className', () => {
     const { getByTestId } = utils.render(<Input {...InputProps} />)
-    const inputContainer = getByTestId('search-input__container')
+    const inputContainer = getByTestId('search-input-container')
     expect(inputContainer.className).toBe(`${InputProps.className}-container`)
   })
 
