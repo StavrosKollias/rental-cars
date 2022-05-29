@@ -1,5 +1,5 @@
 import React from 'react'
-import { IInputProps } from './'
+import { IInputProps } from '.'
 import { Label } from '../Label'
 
 export const Input: React.FC<IInputProps> = ({

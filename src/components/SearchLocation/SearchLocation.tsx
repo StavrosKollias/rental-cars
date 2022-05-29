@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSearchContext } from 'src/contexts/SearchContext'
-import { Input } from '../Input'
+import { Input } from '../Shared/Input'
 
 export const SearchLocation: React.FC = () => {
   const { selectedLocation, setSelectedLocation, content } = useSearchContext()

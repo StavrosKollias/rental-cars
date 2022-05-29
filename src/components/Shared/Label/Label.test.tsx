@@ -1,6 +1,6 @@
 import React from 'react'
 import { ILabelProps, Label } from './'
-import * as utils from '../../test_utils/utils'
+import * as utils from '../../../test_utils/utils'
 
 const LabelProps: ILabelProps = {
   htmlfor: 'input',

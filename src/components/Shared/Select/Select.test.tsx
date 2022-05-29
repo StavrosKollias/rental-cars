@@ -1,6 +1,6 @@
 import React from 'react'
-import * as utils from '../../test_utils/utils'
-import { Select, ISelectProps } from './'
+import * as utils from '../../../test_utils/utils'
+import { Select, ISelectProps } from '.'
 
 const mockOnchange = jest.fn()
 const selectProps: ISelectProps = {

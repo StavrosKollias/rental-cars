@@ -1,6 +1,6 @@
 import React from 'react'
 import { IInputProps, Input } from './'
-import * as utils from '../../test_utils/utils'
+import * as utils from '../../../test_utils/utils'
 
 const mockOnchangeInput = jest.fn()
 
