@@ -29,11 +29,11 @@ describe('SearchLocation', () => {
     expect(label).not.toBeNull()
   })
 
-  test('input onchange fires event', async () => {
+  test('input onchange fires event', () => {
     const { getByTestId } = utils.renderComponent(<SearchLocation />)
     const input = getByTestId('search-input') as HTMLInputElement
     expect(input.value).toBe('')
-    await utils.fireEvent.change(input, { target: { value: 'Manchester' } })
+    utils.fireEvent.change(input, { target: { value: 'Manchester' } })
     expect(mockSetSelectedLocation).toHaveBeenCalledTimes(1)
   })
 })

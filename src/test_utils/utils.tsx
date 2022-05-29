@@ -1,5 +1,4 @@
 //EXPORTS
-// export * from './render-with-router'
 import React from 'react'
 export default '@testing-library/user-event'
 export { render, act, waitFor, fireEvent } from '@testing-library/react'

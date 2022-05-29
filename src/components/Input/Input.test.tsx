@@ -22,19 +22,19 @@ const InputProps: IInputProps = {
 
 describe('Input', () => {
   test('Component renders with no errors', () => {
-    const { getByTestId } = utils.renderComponent(<Input {...InputProps} />)
+    const { getByTestId } = utils.render(<Input {...InputProps} />)
     const inputContainer = getByTestId('search-input__container')
     expect(inputContainer).not.toBeNull()
   })
 
   test('Component renders with className', () => {
-    const { getByTestId } = utils.renderComponent(<Input {...InputProps} />)
+    const { getByTestId } = utils.render(<Input {...InputProps} />)
     const inputContainer = getByTestId('search-input__container')
     expect(inputContainer.className).toBe(`${InputProps.className}-container`)
   })
 
   test('Component renders with input and correct props', () => {
-    const { getByTestId, getByLabelText } = utils.renderComponent(<Input {...InputProps} />)
+    const { getByTestId, getByLabelText } = utils.render(<Input {...InputProps} />)
     const input = getByTestId('search-input') as HTMLInputElement
     expect(input).not.toBeNull()
     expect(input.value).toBe(InputProps.value)
@@ -47,7 +47,7 @@ describe('Input', () => {
   })
 
   test('Component renders with a label and correct props', () => {
-    const { getByTestId } = utils.renderComponent(<Input {...InputProps} />)
+    const { getByTestId } = utils.render(<Input {...InputProps} />)
     const label = getByTestId('input-label') as HTMLLabelElement
     expect(label).not.toBeNull()
     expect(label.textContent).toBe(InputProps.label.labelContext)
@@ -55,7 +55,7 @@ describe('Input', () => {
   })
 
   test('Input onchange triggers the onchange function', () => {
-    const { getByTestId } = utils.renderComponent(<Input {...InputProps} />)
+    const { getByTestId } = utils.render(<Input {...InputProps} />)
     const input = getByTestId('search-input') as HTMLInputElement
     expect(input).not.toBeNull()
     utils.fireEvent.change(input, { target: { value: 'Stockport' } })
