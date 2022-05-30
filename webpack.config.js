@@ -4,10 +4,60 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { removeJsxAttributesTransformer } = require('typescript-transformer-jsx-remove-attributes')
 
 const mode = process.env.NODE_ENV || 'development'
+
+const loadRules = [
+  {
+    test: /\.(ts|tsx)$/,
+    loader: 'ts-loader',
+    options: {
+      getCustomTransformers: () => ({ before: [removeJsxAttributesTransformer(['data-testid'])] }),
+    },
+  },
+  {
+    test: /\.(s*)css$/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 2,
+          sourceMap: false,
+        },
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: false,
+        },
+      },
+    ],
+  },
+]
+
+// Removing attributes data-testid
+mode === 'production'
+  ? loadRules.push({
+      test: /\.(ts|tsx)?$/,
+      use: [
+        {
+          loader: 'babel-loader',
+        },
+      ],
+      exclude: /node_modules/,
+    })
+  : false
+
 module.exports = {
   mode,
   entry: {
     app: ['core-js/stable', './src/index.tsx'],
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    hot: true,
+    port: 3000,
   },
   optimization: {
     splitChunks: {
@@ -26,43 +76,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
-    rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        loader: 'ts-loader',
-        options: {
-          getCustomTransformers: () => ({ before: [removeJsxAttributesTransformer(['data-testid'])] }),
-        },
-      },
-      {
-        test: /\.(s*)css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              sourceMap: false,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: false,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(ts|tsx)?$/,
-        use: [
-          {
-            loader: 'babel-loader',
-          },
-        ],
-        exclude: /node_modules/,
-      },
-    ],
+    rules: loadRules,
   },
   plugins: [
     new HtmlWebpackPlugin({

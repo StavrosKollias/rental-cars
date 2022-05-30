@@ -11,16 +11,6 @@ const SearchLocationProps = {
   content: Labels.inputPickUpLocation,
 }
 
-// beforeEach(() => {
-//   utils.setSearchContext({
-//     getLocationsList: jest.fn(),
-//     locationsList: [],
-//     selectedLocation: '',
-//     setSelectedLocation: mockSetSelectedLocation,
-//     content: Labels,
-//   })
-// })
-
 describe('SearchLocation', () => {
   test('Component renders with no errors', () => {
     const { getByTestId } = utils.render(<SearchLocation {...SearchLocationProps} />)
@@ -30,7 +20,7 @@ describe('SearchLocation', () => {
 
   test('Component renders with input and label', () => {
     const { getByTestId } = utils.render(<SearchLocation {...SearchLocationProps} />)
-    const input = getByTestId('search-input')
+    const input = getByTestId('input-component')
     expect(input).not.toBeNull()
     const label = getByTestId('input-label')
     expect(label).not.toBeNull()
@@ -45,7 +35,7 @@ describe('SearchLocation', () => {
 
   test('Input onchange fires event', () => {
     const { getByTestId } = utils.render(<SearchLocation {...SearchLocationProps} />)
-    const input = getByTestId('search-input') as HTMLInputElement
+    const input = getByTestId('input-component') as HTMLInputElement
     expect(input.value).toBe('')
     utils.fireEvent.change(input, { target: { value: 'Manchester' } })
     expect(mockSetSelectedLocation).toHaveBeenCalledTimes(1)

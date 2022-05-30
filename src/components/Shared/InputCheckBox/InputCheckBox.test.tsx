@@ -1,17 +1,18 @@
 import React from 'react'
-import { IInputProps, Input } from './'
+import { IInputCheckBoxProps, InputCheckBox } from './'
 import * as utils from '../../../test_utils/utils'
 
 const mockOnchangeInput = jest.fn()
 
-const InputProps: IInputProps = {
+const InputProps: IInputCheckBoxProps = {
   id: 'input-id',
   name: 'input-name',
-  type: 'text',
+  type: 'checkbox',
   value: 'Manchester',
   className: 'input-class',
   ariaLabel: 'fill in the input',
   autoComplete: 'off',
+  checked: false,
   label: {
     htmlfor: 'input-name',
     labelContext: 'I am the label',
@@ -20,21 +21,21 @@ const InputProps: IInputProps = {
   onChange: mockOnchangeInput,
 }
 
-describe('Input', () => {
+describe('Input CheckBox', () => {
   test('Component renders with no errors', () => {
-    const { getByTestId } = utils.render(<Input {...InputProps} />)
+    const { getByTestId } = utils.render(<InputCheckBox {...InputProps} />)
     const inputContainer = getByTestId('input-container')
     expect(inputContainer).not.toBeNull()
   })
 
   test('Component renders with className', () => {
-    const { getByTestId } = utils.render(<Input {...InputProps} />)
+    const { getByTestId } = utils.render(<InputCheckBox {...InputProps} />)
     const inputContainer = getByTestId('input-container')
     expect(inputContainer.className).toBe(`${InputProps.className}-container`)
   })
 
   test('Component renders with input and correct props', () => {
-    const { getByTestId, getByLabelText } = utils.render(<Input {...InputProps} />)
+    const { getByTestId, getByLabelText } = utils.render(<InputCheckBox {...InputProps} />)
     const input = getByTestId('input-component') as HTMLInputElement
     expect(input).not.toBeNull()
     expect(input.value).toBe(InputProps.value)
@@ -47,7 +48,7 @@ describe('Input', () => {
   })
 
   test('Component renders with a label and correct props', () => {
-    const { getByTestId } = utils.render(<Input {...InputProps} />)
+    const { getByTestId } = utils.render(<InputCheckBox {...InputProps} />)
     const label = getByTestId('input-label') as HTMLLabelElement
     expect(label).not.toBeNull()
     expect(label.textContent).toBe(InputProps.label.labelContext)
@@ -55,10 +56,10 @@ describe('Input', () => {
   })
 
   test('Input onchange triggers the onchange function', () => {
-    const { getByTestId } = utils.render(<Input {...InputProps} />)
+    const { getByTestId } = utils.render(<InputCheckBox {...InputProps} />)
     const input = getByTestId('input-component') as HTMLInputElement
     expect(input).not.toBeNull()
-    utils.fireEvent.change(input, { target: { value: 'Stockport' } })
+    utils.fireEvent.click(input, { target: { value: 'true' } })
     expect(mockOnchangeInput).toHaveBeenCalledTimes(1)
   })
 })

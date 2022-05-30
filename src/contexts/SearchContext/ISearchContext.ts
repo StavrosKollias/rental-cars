@@ -1,4 +1,4 @@
-import { ILabelsContent } from 'src/constants/Labels'
+import { ILabelsContent } from '../../constants/Labels/ILabels'
 
 export interface ISearchContextProps {
   children: any

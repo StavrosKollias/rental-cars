@@ -22,5 +22,5 @@
       "skipLibCheck": true
     },
     "include": ["./src", "src/setupTests.ts",],
-    "exclude": ["build", "./src/**/*.test.tsx", "./src/test_utils/utils.ts"]
+    "exclude": ["build", "./src/**/*.test.tsx", "./src/test_utils/utils.ts","node_modules"]
   }

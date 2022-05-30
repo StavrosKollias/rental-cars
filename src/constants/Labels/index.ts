@@ -1,2 +1,9 @@
 export { Labels } from './Labels'
-export { ILabelsContent, IInputContent, ILabelContent, ISearchLocationContent } from './ILabels'
+export type {
+  ILabelContent,
+  ILabelsContent,
+  IInputContent,
+  ISearchLocationContent,
+  IDatePickerContent,
+  ITimeSelectContent,
+} from './ILabels'

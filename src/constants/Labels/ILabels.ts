@@ -28,14 +28,24 @@ export interface ISearchLocationContent {
   label: ILabelContent
 }
 
+export interface IDatePickerContent {
+  input: IInputContent
+  label: ILabelContent
+}
+
 export interface ITimeSelectContent {
   select: ISelectContent
   label: ILabelContent
 }
 
+export interface IDifDropOffInputCheckBoxContent extends ISearchLocationContent {}
+
 export interface ILabelsContent {
   inputPickUpLocation: ISearchLocationContent
   inputDropoffLocation: ISearchLocationContent
+  datePickerPickUPDate: IDatePickerContent
+  datePickerDropOffDate: IDatePickerContent
   selectPickUpTime: ITimeSelectContent
   selectDropOffTime: ITimeSelectContent
+  checkboxDifferentDropoffLocation: IDifDropOffInputCheckBoxContent
 }

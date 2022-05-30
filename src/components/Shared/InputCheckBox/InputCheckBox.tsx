@@ -1,13 +1,13 @@
 import React from 'react'
-import { IInputProps } from '.'
+import { IInputCheckBoxProps } from '.'
 import { Label } from '../Label'
 
-export const Input: React.FC<IInputProps> = ({
+export const InputCheckBox: React.FC<IInputCheckBoxProps> = ({
   name,
   id,
   label,
-  type,
   value,
+  checked,
   ariaLabel,
   autoComplete,
   className,
@@ -15,19 +15,20 @@ export const Input: React.FC<IInputProps> = ({
 }) => {
   return (
     <div className={`${className}-container`} data-testid="input-container">
-      <Label {...label} />
       <input
         data-testid="input-component"
-        type={type}
+        type="checkbox"
         id={id}
         aria-label={ariaLabel}
         aria-required="true"
         className={className}
         value={value}
+        checked={checked}
         name={name}
         autoComplete={autoComplete}
         onChange={(event) => onChange(event.target.value)}
       />
+      <Label {...label} />
     </div>
   )
 }

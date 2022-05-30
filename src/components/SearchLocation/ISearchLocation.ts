@@ -1,7 +1,7 @@
-import { ISearchLocationContent } from 'src/constants/Labels'
+import { ISearchLocationContent } from '../../constants/Labels/ILabels'
 
 export interface ISearchLocationProps {
   selectedLocation: string
-  setSelectedLocation: (value: string) => void
   content: ISearchLocationContent
+  setSelectedLocation: (value: string) => void
 }

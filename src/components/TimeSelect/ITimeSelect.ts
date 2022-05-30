@@ -1,7 +1,7 @@
-import { ITimeSelectContent } from 'src/constants/Labels/ILabels'
+import { ITimeSelectContent } from '../../constants/Labels/ILabels'
 
 export interface ITimeSelectProps {
   selectedTime: string
-  setTime: (value: string) => void
   content: ITimeSelectContent
+  setTime: (value: string) => void
 }

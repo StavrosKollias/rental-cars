@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { ISearchContextProps, ISearchContextState } from './'
-import { Labels } from 'src/constants/Labels'
+import { ILabelsContent, Labels } from '../../constants/Labels'
 
 export const SearchContextDefaults: ISearchContextState = {
   locationsList: [],
-  getLocationsList: Function,
+  getLocationsList: () => {},
   selectedLocation: '',
-  setSelectedLocation: Function,
+  setSelectedLocation: () => {},
   content: Labels,
 }
 
@@ -17,7 +17,7 @@ export const useSearchContext = () => React.useContext(SearchContext)
 export const SearchProvider: React.FC<ISearchContextProps> = ({ children }) => {
   const [locationsList, setLocationsList] = React.useState<Array<any>>([])
   const [selectedLocation, setSelectedLocation] = React.useState<string>('')
-  const [content, setContent] = React.useState<any>(Labels)
+  const [content, setContent] = React.useState<ILabelsContent>(Labels)
 
   return (
     <SearchContext.Provider
@@ -28,7 +28,9 @@ export const SearchProvider: React.FC<ISearchContextProps> = ({ children }) => {
         },
         locationsList,
         selectedLocation: '',
-        setSelectedLocation: Function,
+        setSelectedLocation: () => {
+          setSelectedLocation
+        },
         content,
       }}
     >
