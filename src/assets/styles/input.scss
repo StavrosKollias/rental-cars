@@ -1,0 +1,20 @@
+.input-container{
+  width: 100%;
+  @extend .flex;
+  @extend .flex-column;
+  
+
+ &__input{
+    width: 100%;
+    font-weight: $font-weight-bold;
+    font-size: $normal;
+    line-height: $input-line-height;
+  }
+
+  &__label{
+    width: 100%;
+    font-weight: $font-weight-bold;;
+    font-size: $normal;
+    color: $txt-gray;
+  }
+}

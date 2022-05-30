@@ -32,7 +32,7 @@ describe('Time Select Component', () => {
     const label = getByTestId('input-label') as HTMLLabelElement
     expect(label).not.toBeNull()
     expect(label.textContent).toBe(TimeSelectProps.content.label.labelContext)
-    expect(label.className).toBe(TimeSelectProps.content.label.className)
+    expect(label.className).toBe('select-container__label')
   })
 
   test('Component  renders with  Select and correct props', () => {
@@ -43,7 +43,7 @@ describe('Time Select Component', () => {
     expect(select.id).toBe(TimeSelectProps.content.select.id)
     expect(select.value).toBe(TimeSelectProps.selectedTime)
     expect(select.name).toBe(TimeSelectProps.content.select.name)
-    expect(select.className).toBe(TimeSelectProps.content.select.className)
+    expect(select.className).toBe(`select-container__select `)
     const selectByLabel = getByLabelText(TimeSelectProps.content.select.ariaLabel)
     expect(selectByLabel).not.toBeNull()
   })

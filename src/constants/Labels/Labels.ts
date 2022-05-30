@@ -2,24 +2,21 @@ import { ILabelsContent } from '.'
 
 const pickUpLocationLabel = {
   htmlfor: 'search-pickUp-location__input',
-  labelContext: 'Pick Up location',
-  className: '',
+  labelContext: 'Pick-up Location',
 }
 
 const pickUpLocationInput = {
   type: 'text',
   id: 'search-pickUp-location__input',
-  ariaLabel: 'Pick Up location',
+  ariaLabel: 'Pick-up Location',
   ariaRequired: 'true',
-  className: 'input-location',
-  name: 'Pick Up Location',
+  name: 'search-pickUp-location__input',
   autoComplete: 'off',
 }
 
 const dropOffLocationLabel = {
   htmlfor: 'search-dropOff-location__input',
   labelContext: 'Drop-off location',
-  className: '',
 }
 
 const dropOffLocationInput = {
@@ -27,7 +24,6 @@ const dropOffLocationInput = {
   id: 'search-dropOff-location__input',
   ariaLabel: 'Pick Up location',
   ariaRequired: 'true',
-  className: 'input-location',
   name: 'Drop-off Location',
   autoComplete: 'off',
 }
@@ -35,7 +31,6 @@ const dropOffLocationInput = {
 const dropOffDateLabel = {
   htmlfor: 'date-dropOff__input',
   labelContext: 'Drop-off location',
-  className: '',
 }
 
 const dropOffDateInput = {
@@ -51,7 +46,6 @@ const dropOffDateInput = {
 const pickUpDateLabel = {
   htmlfor: 'date-pickUp__input',
   labelContext: 'Pick Up Date',
-  className: '',
 }
 
 const pickUpDateInput = {
@@ -68,7 +62,6 @@ const pickUpTimeSelect = {
   id: 'select-pick-up__time',
   label: 'Time',
   ariaLabel: 'Pick up time',
-  className: 'time-container_select',
   name: 'select-pick-up__time',
   timeGap: 30,
 }
@@ -76,28 +69,24 @@ const pickUpTimeSelect = {
 const pickUpTimeLabel = {
   htmlfor: 'select-pick-up__time',
   labelContext: 'Time',
-  className: '',
 }
 
 const dropOffTimeSelect = {
   id: 'select-drop-off__time',
   label: 'Time',
   ariaLabel: 'Pick up time',
-  className: 'time-container_select',
   name: 'select-pick-up',
   timeGap: 30,
 }
 
 const dropOffTimeLabel = {
   htmlfor: 'select-drop-off__time',
-  labelContext: 'time',
-  className: '',
+  labelContext: 'Time',
 }
 
 const dropOffLocationCheckboxLabel = {
   htmlfor: 'drop-off-Location_checkbox',
   labelContext: 'Drop car off at different location',
-  className: '',
 }
 
 const dropOffLocationCheckbox = {
@@ -109,6 +98,11 @@ const dropOffLocationCheckbox = {
   className: 'input-checkbox',
   name: 'drop-off-Location_checkbox',
   autoComplete: 'off',
+}
+
+const pageContnet = {
+  title: 'Car Hire – Search, Compare & Save',
+  benefits: ['Free cancellations on most bookings', '60,000+ locations', 'Customer support in 40+ languages'],
 }
 
 export const Labels: ILabelsContent = {
@@ -145,4 +139,5 @@ export const Labels: ILabelsContent = {
     input: dropOffLocationCheckbox,
     label: dropOffLocationCheckboxLabel,
   },
+  pageContnet: pageContnet,
 }

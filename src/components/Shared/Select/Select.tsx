@@ -2,13 +2,24 @@ import React from 'react'
 import { ISelectProps } from '.'
 import { Label } from '../Label'
 
-export const Select: React.FC<ISelectProps> = ({ options, id, className, ariaLabel, name, label, value, onChange }) => {
+export const Select: React.FC<ISelectProps> = ({
+  options,
+  id,
+  className = '',
+  selectRef,
+  ariaLabel,
+  name,
+  label,
+  value,
+  onChange,
+}) => {
   return (
-    <div className={`${className}-container`} data-testid="select-container">
-      <Label {...label} />
+    <div className={`select-container ${className}`} data-testid="select-container">
+      <Label {...label} className="select-container__label" />
       <select
+        ref={selectRef}
         id={id}
-        className={className}
+        className={`select-container__select ${className}`}
         name={name}
         onChange={(event) => {
           onChange(event.target.value)

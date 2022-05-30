@@ -30,7 +30,7 @@ describe('Input', () => {
   test('Component renders with className', () => {
     const { getByTestId } = utils.render(<Input {...InputProps} />)
     const inputContainer = getByTestId('input-container')
-    expect(inputContainer.className).toBe(`${InputProps.className}-container`)
+    expect(inputContainer.className).toBe(`input-container ${InputProps.className}`)
   })
 
   test('Component renders with input and correct props', () => {
@@ -38,7 +38,7 @@ describe('Input', () => {
     const input = getByTestId('input-component') as HTMLInputElement
     expect(input).not.toBeNull()
     expect(input.value).toBe(InputProps.value)
-    expect(input.className).toBe(InputProps.className)
+    expect(input.className).toBe(`input-container__input ${InputProps.className}`)
     expect(input.autocomplete).toBe(InputProps.autoComplete)
     expect(input.id).toBe(InputProps.id)
     expect(input.name).toBe(InputProps.name)
@@ -51,7 +51,7 @@ describe('Input', () => {
     const label = getByTestId('input-label') as HTMLLabelElement
     expect(label).not.toBeNull()
     expect(label.textContent).toBe(InputProps.label.labelContext)
-    expect(label.className).toBe(InputProps.label.className)
+    expect(label.className).toBe('input-container__label')
   })
 
   test('Input onchange triggers the onchange function', () => {

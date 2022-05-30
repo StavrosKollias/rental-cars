@@ -1,0 +1,7 @@
+.search-bar{
+  display: flex;
+  background-color: $orange;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 calc(4px/2) calc(4px*3) $black
+}

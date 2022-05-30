@@ -30,7 +30,7 @@ describe('Select Component', () => {
   test('Component renders with correct props', () => {
     const { getByTestId } = utils.render(<Select {...SelectProps} />)
     const selectContainer = getByTestId('select-container')
-    expect(selectContainer.className).toBe(`${SelectProps.className}-container`)
+    expect(selectContainer.className).toBe(`select-container ${SelectProps.className}`)
   })
 
   test('Component Renders with Select and correct props', () => {
@@ -39,7 +39,7 @@ describe('Select Component', () => {
     expect(select.id).toBe(SelectProps.id)
     expect(select.value).toBe(SelectProps.value)
     expect(select.name).toBe(SelectProps.name)
-    expect(select.className).toBe(SelectProps.className)
+    expect(select.className).toBe(`select-container__select ${SelectProps.className}`)
     const selectByLabel = getByLabelText(SelectProps.ariaLabel)
     expect(selectByLabel).not.toBeNull()
   })
@@ -49,7 +49,7 @@ describe('Select Component', () => {
     const label = getByTestId('input-label') as HTMLLabelElement
     expect(label).not.toBeNull()
     expect(label.textContent).toBe(SelectProps.label.labelContext)
-    expect(label.className).toBe(SelectProps.label.className)
+    expect(label.className).toBe('select-container__label')
   })
 
   test('Component renders 4 options', () => {

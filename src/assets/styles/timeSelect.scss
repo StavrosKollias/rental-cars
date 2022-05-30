@@ -1,0 +1,29 @@
+.time-container{
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  border-radius: $input-border-radious;
+  position: relative;
+  max-width: 7rem;
+  min-width: 6rem;
+
+
+  &:hover{
+    cursor: pointer;
+  }
+  
+  &:focus-within,&:focus {
+     box-shadow:  0 0 0 3px rgb(18 115 196 / 24%)
+   }
+
+  span{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+  }
+}

@@ -40,4 +40,12 @@ describe('SearchLocation', () => {
     utils.fireEvent.change(input, { target: { value: 'Manchester' } })
     expect(mockSetSelectedLocation).toHaveBeenCalledTimes(1)
   })
+
+  test('Clicking the container focuses on the input', () => {
+    const { getByTestId } = utils.render(<SearchLocation {...SearchLocationProps} />)
+    const searchLocationContainer = getByTestId('search-location')
+    const input = getByTestId('input-component') as HTMLInputElement
+    utils.fireEvent.click(searchLocationContainer)
+    expect(document.activeElement).toBe(input)
+  })
 })

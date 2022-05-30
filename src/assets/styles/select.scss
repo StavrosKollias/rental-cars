@@ -1,0 +1,28 @@
+.select-container{
+  width: 100%;
+  @extend .flex;
+  @extend .flex-column;
+
+  
+
+  &__select{
+    padding: 2.1rem 0.1rem 1rem 2.2rem;
+    border-radius: $input-border-radious;
+    z-index: 1;
+    background: transparent;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  &__label{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: $font-weight-medium;
+    font-size: $small;
+    color: $txt-gray;
+  }
+}

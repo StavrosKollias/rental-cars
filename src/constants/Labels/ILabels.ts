@@ -3,7 +3,6 @@ export interface IInputContent {
   id: string
   ariaLabel: string
   ariaRequired: string
-  className: string
   name: string
   autoComplete: string
 }
@@ -11,7 +10,6 @@ export interface IInputContent {
 export interface ISelectContent {
   id: string
   label: string
-  className: string
   name: string
   ariaLabel: string
   timeGap: number
@@ -20,7 +18,6 @@ export interface ISelectContent {
 export interface ILabelContent {
   htmlfor: string
   labelContext: string
-  className: string
 }
 
 export interface ISearchLocationContent {
@@ -38,6 +35,11 @@ export interface ITimeSelectContent {
   label: ILabelContent
 }
 
+export interface IPageContent {
+  title: string
+  benefits: Array<string>
+}
+
 export interface IDifDropOffInputCheckBoxContent extends ISearchLocationContent {}
 
 export interface ILabelsContent {
@@ -48,4 +50,5 @@ export interface ILabelsContent {
   selectPickUpTime: ITimeSelectContent
   selectDropOffTime: ITimeSelectContent
   checkboxDifferentDropoffLocation: IDifDropOffInputCheckBoxContent
+  pageContnet: IPageContent
 }

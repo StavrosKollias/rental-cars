@@ -4,7 +4,8 @@ import { ClockIcon } from '../../assets/Icons'
 import { Select } from '../Shared/Select'
 import { getTimesArray } from '../../utils'
 
-export const TimeSelect: React.FC<ITimeSelectProps> = ({ content, selectedTime, setTime }) => {
+export const TimeSelect: React.FC<ITimeSelectProps> = ({ content, className = '', selectedTime, setTime }) => {
+  const selectRef = React.useRef<HTMLSelectElement>(null)
   const selectOptions: Array<string> = getTimesArray(content.select.timeGap)
 
   const hangleChangeSelectTime = (value) => {
@@ -12,17 +13,17 @@ export const TimeSelect: React.FC<ITimeSelectProps> = ({ content, selectedTime, 
   }
 
   return (
-    <div className="time-container" data-testid="time-select-container">
+    <div className={`time-container ${className}`} data-testid="time-select-container">
       <span data-testid="clock-icon-container">
         <ClockIcon />
       </span>
 
       <Select
         {...content.select}
+        selectRef={selectRef}
         label={content.label}
         options={selectOptions}
         value={selectedTime}
-        className="time-container_select"
         onChange={hangleChangeSelectTime}
       />
     </div>

@@ -7,7 +7,15 @@ export interface ISearchContextProps {
 export interface ISearchContextState {
   getLocationsList: () => void
   locationsList: Array<any>
-  selectedLocation: ''
-  setSelectedLocation: Function
+  selectedPickUpLocation: string
+  setSelectedPickUpLocation: (value: string) => void
+  selectedDropOffLocation: string
+  setSelectedDropOffLocation: (value: string) => void
+  selectedPickUpTime: string
+  setSelectedPickUpTime: (value: string) => void
+  selectedDropOffTime: string
+  setSelectedDropOffTime: (value: string) => void
+  dropOffLocationFlag: boolean
+  setDropOffLocationFlag: (value: boolean) => void
   content: ILabelsContent
 }

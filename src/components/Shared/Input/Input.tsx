@@ -10,19 +10,21 @@ export const Input: React.FC<IInputProps> = ({
   value,
   ariaLabel,
   autoComplete,
-  className,
+  className = '',
+  inputRef,
   onChange,
 }) => {
   return (
-    <div className={`${className}-container`} data-testid="input-container">
-      <Label {...label} />
+    <div className={`input-container ${className}`} data-testid="input-container">
+      <Label {...label} className="input-container__label" />
       <input
+        ref={inputRef}
         data-testid="input-component"
         type={type}
         id={id}
         aria-label={ariaLabel}
         aria-required="true"
-        className={className}
+        className={`input-container__input ${className}`}
         value={value}
         name={name}
         autoComplete={autoComplete}

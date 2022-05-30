@@ -1,5 +1,5 @@
 export interface ILabelProps {
   htmlfor: string
   labelContext: string
-  className: string
+  className?: string
 }

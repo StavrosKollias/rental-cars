@@ -1,3 +1,15 @@
-.app{
-    background-color: rgb(78, 144, 201);
-}
+
+@import "./colours.scss";
+@import "./vars.scss";
+@import "./globals.scss";
+@import"./input.scss";
+@import "./select.scss";
+@import "./header.scss";
+@import "./banner.scss";
+@import "./searchLocation.scss";
+@import "./searchBar.scss";
+@import "./timeSelect.scss";
+@import "./utils.scss";
+
+
+
