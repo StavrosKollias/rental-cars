@@ -22,7 +22,7 @@ const dropOffLocationLabel = {
 const dropOffLocationInput = {
   type: 'text',
   id: 'search-dropOff-location__input',
-  ariaLabel: 'Pick Up location',
+  ariaLabel: 'Drop-off Location',
   ariaRequired: 'true',
   name: 'Drop-off Location',
   autoComplete: 'off',
@@ -30,7 +30,7 @@ const dropOffLocationInput = {
 
 const dropOffDateLabel = {
   htmlfor: 'date-dropOff__input',
-  labelContext: 'Drop-off location',
+  labelContext: 'Drop-off Date',
 }
 
 const dropOffDateInput = {
@@ -52,14 +52,14 @@ const pickUpDateInput = {
   id: 'date-pickUp__input',
   ariaLabel: 'Pick-up Date',
   ariaRequired: 'true',
-  name: 'Pick Up Date',
+  name: 'Pick-up-date',
   autoComplete: 'off',
 }
 
 const pickUpTimeSelect = {
   id: 'select-pick-up__time',
   label: 'Time',
-  ariaLabel: 'Pick-up time',
+  ariaLabel: 'Pick-up Time',
   name: 'select-pick-up__time',
   timeGap: 30,
 }
@@ -72,8 +72,8 @@ const pickUpTimeLabel = {
 const dropOffTimeSelect = {
   id: 'select-drop-off__time',
   label: 'Time',
-  ariaLabel: 'Pick up time',
-  name: 'select-pick-up',
+  ariaLabel: 'Drop-off Time',
+  name: 'select-drop-off__time',
   timeGap: 30,
 }
 
@@ -90,7 +90,7 @@ const dropOffLocationCheckboxLabel = {
 const dropOffLocationCheckbox = {
   type: 'checkbox',
   id: 'drop-off-Location_checkbox',
-  ariaLabel: 'checkbox different Location',
+  ariaLabel: 'Checkbox different Location select',
   checked: true,
   ariaRequired: 'true',
   className: 'input-checkbox',

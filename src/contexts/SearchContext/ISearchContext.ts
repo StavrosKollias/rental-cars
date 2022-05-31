@@ -1,11 +1,31 @@
 import { ILabelsContent } from '../../constants/Labels/ILabels'
 
+export interface ILocationItem {
+  alternative: Array<string>
+  bookingId: string
+  city?: string
+  country: string
+  countryIso: string
+  iata?: string
+  index: number
+  isPopular: boolean
+  lang: string
+  lat: number
+  lng: number
+  locationId: string
+  name: string
+  placeKey: string
+  placeType: string
+  region?: string
+  searchType: string
+  ufi: number
+}
+
 export interface ISearchContextProps {
   children: any
 }
 
 export interface ISearchContextState {
-  // getLocationsList: () => void
   locationsList: Array<any>
   selectedPickUpLocation: string
   setSelectedPickUpLocation: (value: string) => void

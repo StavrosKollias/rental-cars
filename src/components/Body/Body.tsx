@@ -12,7 +12,7 @@ export const Body: React.FC = () => {
     <div className="body" data-testid="body">
       <Header />
       <Banner>
-        <div className="container">
+        <div className="container" data-role="main">
           <h1 data-testid="main-title">{content.pageContnet.title}</h1>
           <ListOfBenefits content={content.pageContnet.benefits} />
           <SearchBar />

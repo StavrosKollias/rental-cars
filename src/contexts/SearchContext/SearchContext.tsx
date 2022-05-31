@@ -1,6 +1,6 @@
 import React from 'react'
 import { debounce } from 'lodash'
-import { ISearchContextProps, ISearchContextState } from './'
+import { ILocationItem, ISearchContextProps, ISearchContextState } from './'
 import { ILabelsContent, Labels } from '../../constants/Labels'
 import { GetLocationsList } from '../../api'
 
@@ -28,7 +28,7 @@ export const SearchContext = React.createContext(SearchContextDefaults)
 export const useSearchContext = () => React.useContext(SearchContext)
 
 export const SearchProvider: React.FC<ISearchContextProps> = ({ children }) => {
-  const [locationsList, setLocationsList] = React.useState<Array<any>>([])
+  const [locationsList, setLocationsList] = React.useState<Array<ILocationItem>>([])
   // Location
   const [selectedPickUpLocation, setSelectedPickUpLocation] = React.useState<string>('')
   const [selectedDropOffLocation, setSelectedDropOffLocation] = React.useState<string>('')
@@ -45,6 +45,14 @@ export const SearchProvider: React.FC<ISearchContextProps> = ({ children }) => {
   const [dropOffLocationFlag, setDropOffLocationFlag] = React.useState<boolean>(false)
 
   const [content, setContent] = React.useState<ILabelsContent>(Labels)
+  // debounce
+  const debouncedGetLocations = React.useRef(
+    debounce(async (query) => {
+      getLocationsList(query)
+    }, 300),
+  ).current
+
+  const interactiveLocation = React.useRef('')
 
   const getLocationsList = async (term: string) => {
     const response = await GetLocationsList(
@@ -57,20 +65,19 @@ export const SearchProvider: React.FC<ISearchContextProps> = ({ children }) => {
     setLocationsList(response.results.docs)
   }
 
-  const debouncedGetLocations = React.useRef(
-    debounce(async (query) => {
-      getLocationsList(query)
-    }, 300),
-  ).current
-
   React.useEffect(() => {
-    console.log('UseAffect', selectedPickUpLocation)
-    if (selectedPickUpLocation.length > 1 || selectedDropOffLocation.length > 1)
-      debouncedGetLocations(selectedPickUpLocation)
+    if (selectedDropOffLocation.length > 1) debouncedGetLocations(selectedDropOffLocation)
     return () => {
       debouncedGetLocations.cancel()
     }
-  }, [selectedPickUpLocation, selectedDropOffLocation])
+  }, [selectedDropOffLocation])
+
+  React.useEffect(() => {
+    if (selectedPickUpLocation.length > 1) debouncedGetLocations(selectedPickUpLocation)
+    return () => {
+      debouncedGetLocations.cancel()
+    }
+  }, [selectedPickUpLocation])
 
   return (
     <SearchContext.Provider

@@ -2,8 +2,10 @@ import React from 'react'
 import { ISearchLocationProps } from './'
 import { SearchIcon } from '../../assets/Icons'
 import { Input } from '../Shared/Input'
+import { LocationList } from '../LocationList'
 
 export const SearchLocation: React.FC<ISearchLocationProps> = ({
+  locationList,
   selectedLocation,
   setSelectedLocation,
   content,
@@ -35,6 +37,8 @@ export const SearchLocation: React.FC<ISearchLocationProps> = ({
         value={selectedLocation}
         onChange={hangleChangeIpnutLocation}
       />
+
+      {locationList && <LocationList locations={locationList} setSelectedValue={() => setSelectedLocation} />}
     </div>
   )
 }
