@@ -13,7 +13,7 @@ export const Input: React.FC<IInputProps> = ({
   className = '',
   inputRef,
   onChange,
-  onBlur,
+  onBlur = () => false,
 }) => {
   return (
     <div className={`input-container ${className}`} data-testid="input-container">

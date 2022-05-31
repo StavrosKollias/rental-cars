@@ -20,6 +20,7 @@ const mockDebounce = jest.fn()
 
 describe('SearchBar', () => {
   beforeEach(() => {
+    jest.resetAllMocks()
     debouceClock = sinon.useFakeTimers()
     debounce(mockDebounce, 300)
     utils.setSearchContext({
@@ -58,16 +59,27 @@ describe('SearchBar', () => {
     expect(searchBar).not.toBeNull()
   })
 
-  test('Component renders with one search location pickup input and fires setLocation on change', () => {
+  test('Component renders with one search location pickup input and fires setLocation on change without the debounce', () => {
+    const { getAllByTestId, getByLabelText } = utils.renderComponent(<SearchBar />)
+    const searchLocations = getAllByTestId('search-location')
+    expect(searchLocations.length).toBe(1)
+    const input = getByLabelText('Pick-up Location')
+    utils.fireEvent.change(input, { target: { value: 'M' } })
+    expect(mockSetSelectedPickUpLocation).toHaveBeenCalledTimes(1)
+    expect(mockDebounce).toHaveBeenCalledTimes(0)
+  })
+
+  test('Component renders with one search location pickup input and fires setLocation on change with debounce', () => {
     const { getAllByTestId, getByLabelText } = utils.renderComponent(<SearchBar />)
     const searchLocations = getAllByTestId('search-location')
     expect(searchLocations.length).toBe(1)
     const input = getByLabelText('Pick-up Location')
     utils.fireEvent.change(input, { target: { value: 'Manchester' } })
     expect(mockSetSelectedPickUpLocation).toHaveBeenCalledTimes(1)
+    expect(mockDebounce).toHaveBeenCalledTimes(1)
   })
 
-  test('Component renders with two search location pickup input and fires setLocation on change', () => {
+  test('Component renders with two search location pickup input and fires setLocation on change with debounce', () => {
     utils.setSearchContext({ dropOffLocationFlag: true })
     const { getAllByTestId, getByLabelText } = utils.renderComponent(<SearchBar />)
     const searchLocations = getAllByTestId('search-location')
@@ -75,9 +87,10 @@ describe('SearchBar', () => {
     const input = getByLabelText('Drop-off Location')
     utils.fireEvent.change(input, { target: { value: 'Manchester' } })
     expect(mockSetSelectedDropOffLocation).toHaveBeenCalledTimes(1)
+    expect(mockDebounce).toHaveBeenCalledTimes(1)
   })
 
-  test('component renders with two date pickers and fires the events on change', () => {
+  test('Component renders with two date pickers and fires the events on change', () => {
     const { getAllByTestId, getByLabelText } = utils.renderComponent(<SearchBar />)
     const datePickers = getAllByTestId('date-picker')
     expect(datePickers.length).toBe(2)

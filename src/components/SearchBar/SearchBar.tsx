@@ -35,17 +35,16 @@ export const SearchBar: React.FC = () => {
     if (!pickUpListState) {
       setPickUpListState(!pickUpListState)
     }
-    debouncedGetLocations(value)
+    value.length > 1 && debouncedGetLocations(value)
+
     setSelectedPickUpLocation(value)
   }
 
   const hanldleLocationDropOffSearch = (value: string) => {
-    console.log()
     if (!dropOffListState) {
       setDropOffListState(!dropOffListState)
     }
-
-    debouncedGetLocations(value)
+    value.length > 1 && debouncedGetLocations(value)
     setSelectedDropOffLocation(value)
   }
 

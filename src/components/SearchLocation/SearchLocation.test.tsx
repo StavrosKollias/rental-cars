@@ -106,7 +106,7 @@ const locationListprops: Array<ILocationItem> = [
   },
 ]
 const SearchLocationProps = {
-  selectedLocation: '',
+  selectedLocation: 'Manchester123',
   setSelectedLocation: mockSetSelectedLocation,
   hanldleLocationSearch: mockHanldleLocationSearch,
   listState: true,
@@ -116,6 +116,9 @@ const SearchLocationProps = {
 }
 
 describe('SearchLocation', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
   test('Component renders with no errors', () => {
     const { getByTestId } = utils.render(<SearchLocation {...SearchLocationProps} />)
     const searchLocationContainer = getByTestId('search-location')
@@ -140,7 +143,7 @@ describe('SearchLocation', () => {
   test('Input onchange fires event', () => {
     const { getByTestId } = utils.render(<SearchLocation {...SearchLocationProps} />)
     const input = getByTestId('input-component') as HTMLInputElement
-    expect(input.value).toBe('')
+    expect(input.value).toBe('Manchester123')
     utils.fireEvent.change(input, { target: { value: 'Manchester' } })
     expect(mockHanldleLocationSearch).toHaveBeenCalledTimes(1)
   })
@@ -151,6 +154,7 @@ describe('SearchLocation', () => {
     const input = getByTestId('input-component') as HTMLInputElement
     utils.fireEvent.click(searchLocationContainer)
     expect(document.activeElement).toBe(input)
+    expect(mockSetListState).toHaveBeenCalledTimes(1)
   })
 
   test('Component Renders with locations list and items fire event', () => {
@@ -161,9 +165,8 @@ describe('SearchLocation', () => {
     expect(locationList).not.toBeNull()
     const listItems = getAllByTestId('location-list__item')
     expect(listItems.length).toBe(locationListprops.length)
-
     utils.fireEvent.click(listItems[0])
-    expect(mockSetListState).toHaveBeenCalledTimes(2)
+    expect(mockSetListState).toHaveBeenCalledTimes(1)
     expect(mockSetSelectedLocation).toHaveBeenCalledTimes(1)
   })
 })

@@ -16,7 +16,9 @@ export const SearchLocation: React.FC<ISearchLocationProps> = ({
 }) => {
   const inputClassName: string = selectedLocation ? 'inserted' : ''
   const focusRef = React.useRef<HTMLInputElement>(null)
-
+  const filteredLocationList = locationList.filter((e, i) => {
+    return selectedLocation.indexOf(e.name) > -1
+  })
   return (
     <div
       className={`search-location ${className}`}
@@ -24,6 +26,7 @@ export const SearchLocation: React.FC<ISearchLocationProps> = ({
       onClick={() => {
         focusRef.current && focusRef.current.focus()
         focusRef.current.select()
+        filteredLocationList.length === 0 && hanldleLocationSearch(selectedLocation)
         locationList.length > 0 && setListState(true)
       }}
     >
@@ -46,7 +49,7 @@ export const SearchLocation: React.FC<ISearchLocationProps> = ({
           })
         }}
       />
-      {listState && (
+      {listState && listState && selectedLocation.length > 1 && (
         <LocationList
           selectedValue={selectedLocation}
           locations={locationList}
