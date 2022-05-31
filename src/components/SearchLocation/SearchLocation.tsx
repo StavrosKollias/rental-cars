@@ -7,13 +7,13 @@ import { LocationList } from '../LocationList'
 export const SearchLocation: React.FC<ISearchLocationProps> = ({
   locationList,
   selectedLocation,
+  hanldleLocationSearch,
   setSelectedLocation,
+  listState,
+  setListState,
   content,
   className = '',
 }) => {
-  const hangleChangeIpnutLocation = (value: string) => {
-    setSelectedLocation(value)
-  }
   const inputClassName: string = selectedLocation ? 'inserted' : ''
   const focusRef = React.useRef<HTMLInputElement>(null)
 
@@ -35,10 +35,19 @@ export const SearchLocation: React.FC<ISearchLocationProps> = ({
         className={inputClassName}
         label={content.label}
         value={selectedLocation}
-        onChange={hangleChangeIpnutLocation}
+        onChange={hanldleLocationSearch}
+        onBlur={() => setListState(false)}
       />
-
-      {locationList && <LocationList locations={locationList} setSelectedValue={() => setSelectedLocation} />}
+      {listState && (
+        <LocationList
+          selectedValue={selectedLocation}
+          locations={locationList}
+          setSelectedValue={(value: string) => {
+            setListState(false)
+            setSelectedLocation(value)
+          }}
+        />
+      )}
     </div>
   )
 }

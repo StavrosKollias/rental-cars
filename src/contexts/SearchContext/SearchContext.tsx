@@ -11,6 +11,10 @@ export const SearchContextDefaults: ISearchContextState = {
   setSelectedPickUpLocation: Function,
   selectedDropOffLocation: '',
   setSelectedDropOffLocation: Function,
+  pickUpListState: false,
+  setPickUpListState: (value: boolean) => value,
+  dropOffListState: false,
+  setDropOffListState: (value: boolean) => value,
   selectedPickUpTime: '',
   setSelectedPickUpTime: Function,
   selectedDropOffTime: '',
@@ -21,6 +25,7 @@ export const SearchContextDefaults: ISearchContextState = {
   setSelectedPickUpDate: Function,
   selectedDropOffDate: '',
   setSelectedDropOffDate: Function,
+  debouncedGetLocations: (query: any) => query,
   content: Labels,
 }
 
@@ -32,7 +37,8 @@ export const SearchProvider: React.FC<ISearchContextProps> = ({ children }) => {
   // Location
   const [selectedPickUpLocation, setSelectedPickUpLocation] = React.useState<string>('')
   const [selectedDropOffLocation, setSelectedDropOffLocation] = React.useState<string>('')
-
+  const [pickUpListState, setPickUpListState] = React.useState<boolean>(false)
+  const [dropOffListState, setDropOffListState] = React.useState<boolean>(false)
   // Time
   const [selectedPickUpTime, setSelectedPickUpTime] = React.useState<string>('')
   const [selectedDropOffTime, setSelectedDropOffTime] = React.useState<string>('')
@@ -52,32 +58,12 @@ export const SearchProvider: React.FC<ISearchContextProps> = ({ children }) => {
     }, 300),
   ).current
 
-  const interactiveLocation = React.useRef('')
-
   const getLocationsList = async (term: string) => {
     const response = await GetLocationsList(
-      `https://www.rentalcars.com/FTSAutocomplete.do?${new URLSearchParams({
-        solrIndex: 'fts_en',
-        s0lrRows: `${6}`,
-        solrTerm: `${term}`,
-      })}`,
+      `https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&s0lrRows=6&solrTerm:${term}`,
     )
     setLocationsList(response.results.docs)
   }
-
-  React.useEffect(() => {
-    if (selectedDropOffLocation.length > 1) debouncedGetLocations(selectedDropOffLocation)
-    return () => {
-      debouncedGetLocations.cancel()
-    }
-  }, [selectedDropOffLocation])
-
-  React.useEffect(() => {
-    if (selectedPickUpLocation.length > 1) debouncedGetLocations(selectedPickUpLocation)
-    return () => {
-      debouncedGetLocations.cancel()
-    }
-  }, [selectedPickUpLocation])
 
   return (
     <SearchContext.Provider
@@ -87,6 +73,10 @@ export const SearchProvider: React.FC<ISearchContextProps> = ({ children }) => {
         setSelectedPickUpLocation,
         selectedDropOffLocation,
         setSelectedDropOffLocation,
+        pickUpListState,
+        setPickUpListState,
+        dropOffListState,
+        setDropOffListState,
         selectedPickUpTime,
         setSelectedPickUpTime,
         selectedDropOffTime,
@@ -97,6 +87,7 @@ export const SearchProvider: React.FC<ISearchContextProps> = ({ children }) => {
         setSelectedPickUpDate,
         selectedDropOffDate,
         setSelectedDropOffDate,
+        debouncedGetLocations,
         content,
       }}
     >

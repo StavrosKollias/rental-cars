@@ -13,6 +13,11 @@ export const SearchBar: React.FC = () => {
     selectedPickUpLocation,
     setSelectedDropOffLocation,
     selectedDropOffLocation,
+
+    pickUpListState,
+    setPickUpListState,
+    dropOffListState,
+    setDropOffListState,
     selectedPickUpTime,
     setSelectedPickUpTime,
     selectedDropOffTime,
@@ -22,9 +27,30 @@ export const SearchBar: React.FC = () => {
     selectedDropOffDate,
     setSelectedDropOffDate,
     dropOffLocationFlag,
+    debouncedGetLocations,
     content,
   } = useSearchContext()
 
+  const hanldleLocationPickUPSearch = (value: string) => {
+    if (!pickUpListState) {
+      setPickUpListState(!pickUpListState)
+    }
+    debouncedGetLocations(value)
+    setSelectedPickUpLocation(value)
+  }
+
+  const hanldleLocationDropOffSearch = (value: string) => {
+    console.log()
+    if (!dropOffListState) {
+      setDropOffListState(!dropOffListState)
+    }
+
+    debouncedGetLocations(value)
+    setSelectedDropOffLocation(value)
+  }
+
+  dropOffListState
+  pickUpListState
   return (
     <form>
       <div className="search-bar" data-testid="search-bar-component">
@@ -32,7 +58,10 @@ export const SearchBar: React.FC = () => {
           locationList={locationsList}
           content={content.inputPickUpLocation}
           selectedLocation={selectedPickUpLocation}
+          hanldleLocationSearch={hanldleLocationPickUPSearch}
           setSelectedLocation={setSelectedPickUpLocation}
+          listState={pickUpListState}
+          setListState={setPickUpListState}
         />
 
         {dropOffLocationFlag && (
@@ -40,7 +69,10 @@ export const SearchBar: React.FC = () => {
             locationList={locationsList}
             content={content.inputDropoffLocation}
             selectedLocation={selectedDropOffLocation}
+            hanldleLocationSearch={hanldleLocationDropOffSearch}
             setSelectedLocation={setSelectedDropOffLocation}
+            listState={dropOffListState}
+            setListState={setDropOffListState}
           />
         )}
 

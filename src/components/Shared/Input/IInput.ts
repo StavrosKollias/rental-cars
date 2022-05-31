@@ -11,4 +11,5 @@ export interface IInputProps {
   id: string
   label: ILabelProps
   onChange: (value: string) => void
+  onBlur?: () => void
 }

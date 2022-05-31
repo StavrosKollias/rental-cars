@@ -12,8 +12,8 @@ export const getTimesArray = (minutesGap: number) => {
   return new Array(length).fill('').map((e, i) => {
     const minutes = i * minutesGap
     const hours = Math.floor(minutes / 60)
-    const hoursDisplayed = `0${hours}`
-    const minutesDisplayed = `0${minutes % 60}`
+    const hoursDisplayed = `0${hours + ''}`
+    const minutesDisplayed = `0${'' + (minutes % 60)}`
     const time = `${hoursDisplayed.slice(-2)}:${minutesDisplayed.slice(-2)}`
     return time
   })

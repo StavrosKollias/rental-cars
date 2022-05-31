@@ -144,7 +144,7 @@ const locationListprops: Array<ILocationItem> = [
 describe('Location List', () => {
   test('Component renders with no error', () => {
     const { getByTestId } = utils.render(
-      <LocationList locations={locationListprops} setSelectedValue={mockSelectedValue} />,
+      <LocationList selectedValue="" locations={locationListprops} setSelectedValue={mockSelectedValue} />,
     )
 
     const locationListContainer = getByTestId('location-list-container')
@@ -155,13 +155,13 @@ describe('Location List', () => {
 
   test('Component renders with correct props', () => {
     const { getAllByTestId } = utils.render(
-      <LocationList locations={locationListprops} setSelectedValue={mockSelectedValue} />,
+      <LocationList selectedValue="" locations={locationListprops} setSelectedValue={mockSelectedValue} />,
     )
     const listItems = getAllByTestId('location-list__item')
     expect(listItems.length).toBe(7)
 
     expect(listItems[0].getElementsByClassName('location-name')[0].textContent).toBe(
-      locationListprops[0].name + '' + locationListprops[0].iata,
+      locationListprops[0].name + ', ' + locationListprops[0].iata,
     )
     expect(listItems[0].getElementsByClassName('location-region')[0].textContent).toBe(
       'London, Greater London, United Kingdom',
@@ -170,7 +170,7 @@ describe('Location List', () => {
 
   test('onclick item fires the setSelectedvalue', () => {
     const { getAllByTestId } = utils.render(
-      <LocationList locations={locationListprops} setSelectedValue={mockSelectedValue} />,
+      <LocationList selectedValue="" locations={locationListprops} setSelectedValue={mockSelectedValue} />,
     )
     const listItems = getAllByTestId('location-list__item')
     utils.fireEvent.click(listItems[0])

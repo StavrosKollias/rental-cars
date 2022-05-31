@@ -31,6 +31,10 @@ export interface ISearchContextState {
   setSelectedPickUpLocation: (value: string) => void
   selectedDropOffLocation: string
   setSelectedDropOffLocation: (value: string) => void
+  pickUpListState: boolean
+  setPickUpListState: (value: boolean) => void
+  dropOffListState: boolean
+  setDropOffListState: (value: boolean) => void
   selectedPickUpTime: string
   setSelectedPickUpTime: (value: string) => void
   selectedDropOffTime: string
@@ -41,5 +45,6 @@ export interface ISearchContextState {
   setSelectedPickUpDate: (value: string) => void
   selectedDropOffDate: string
   setSelectedDropOffDate: (value: string) => void
+  debouncedGetLocations: (query: any) => Promise<void>
   content: ILabelsContent
 }

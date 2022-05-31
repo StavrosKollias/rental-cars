@@ -1,0 +1,77 @@
+.location-list-container {
+  position: absolute;
+  top: 110%;
+  width: 100%;
+  height: auto;
+  border-radius: $input-border-radious;
+  background-color: $white;
+  z-index: 5;
+
+  &__list {
+    width: 100%;
+
+    .location-not-found {
+      padding: 1rem;
+    }
+
+    &-item {
+      display: flex;
+      height: 4rem;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.2rem 1rem;
+      font-weight: $font-weight-medium;
+      color: $txt-gray;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(18, 115, 196, 0.06);
+      }
+
+      &.selected {
+        background-color: rgba(18, 115, 196, 0.06);
+      }
+
+      .badge {
+        padding: 0.3rem;
+        border-radius: $input-border-radious;
+        min-width: 3rem;
+        text-align: center;
+        font-size: $small;
+      }
+
+      .location {
+        &-details {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+
+        &-name {
+          font-size: $medium;
+        }
+        &-region {
+          font-size: $small;
+        }
+
+        &-badge {
+          &-T {
+            background-color: #0071c2;
+          }
+
+          &-A {
+            background-color: #ff8000;
+          }
+
+          &-C {
+            background-color: #0071c2;
+          }
+
+          &-I {
+            background-color: #f1c74c;
+          }
+        }
+      }
+    }
+  }
+}

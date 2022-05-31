@@ -2,6 +2,10 @@ import React from 'react'
 import { SearchBar } from './'
 import * as utils from '../../test_utils/utils'
 import { Labels } from '../../constants/Labels'
+import debounce from 'lodash.debounce'
+import * as sinon from 'sinon'
+
+let debouceClock
 
 const mockSetSelectedPickUpLocation = jest.fn()
 const mockSetSelectedDropOffLocation = jest.fn()
@@ -10,15 +14,25 @@ const mockSetSelectedDropOffTime = jest.fn()
 const mockSetDropOffLocationFlag = jest.fn()
 const mockSetSelectedPickUpDate = jest.fn()
 const mockSetSelectedDropOffDate = jest.fn()
+const mockSetPickUpListState = jest.fn()
+const mockSetDropOffListState = jest.fn()
+const mockDebounce = jest.fn()
 
 describe('SearchBar', () => {
   beforeEach(() => {
+    debouceClock = sinon.useFakeTimers()
+    debounce(mockDebounce, 300)
     utils.setSearchContext({
       locationsList: [],
       selectedPickUpLocation: '',
       setSelectedPickUpLocation: mockSetSelectedPickUpLocation,
       selectedDropOffLocation: '',
       setSelectedDropOffLocation: mockSetSelectedDropOffLocation,
+      pickUpListState: false,
+      setPickUpListState: mockSetPickUpListState,
+      dropOffListState: false,
+      setDropOffListState: mockSetDropOffListState,
+
       selectedPickUpTime: '',
       setSelectedPickUpTime: mockSetSelectedPickUpTime,
       selectedDropOffTime: '',
@@ -29,8 +43,13 @@ describe('SearchBar', () => {
       setSelectedPickUpDate: mockSetSelectedPickUpDate,
       selectedDropOffDate: '31/05/2022',
       setSelectedDropOffDate: mockSetSelectedDropOffDate,
+      debouncedGetLocations: mockDebounce,
       content: Labels,
     })
+  })
+
+  afterEach(() => {
+    debouceClock.restore()
   })
 
   test('Component renders with no error', () => {

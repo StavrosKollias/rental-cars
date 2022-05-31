@@ -1,8 +1,11 @@
 import React from 'react'
+import userEvent from '@testing-library/user-event'
 import { IInputProps, Input } from './'
+
 import * as utils from '../../../test_utils/utils'
 
 const mockOnchangeInput = jest.fn()
+const mockOnBlur = jest.fn()
 
 const InputProps: IInputProps = {
   id: 'input-id',
@@ -17,6 +20,7 @@ const InputProps: IInputProps = {
     labelContext: 'I am the label',
     className: 'label-class',
   },
+  onBlur: mockOnBlur,
   onChange: mockOnchangeInput,
 }
 
@@ -60,5 +64,17 @@ describe('Input', () => {
     expect(input).not.toBeNull()
     utils.fireEvent.change(input, { target: { value: 'Stockport' } })
     expect(mockOnchangeInput).toHaveBeenCalledTimes(1)
+  })
+
+  test('Input onblur triggers the onblur function', () => {
+    const { getByTestId } = utils.render(<Input {...InputProps} />)
+    const input = getByTestId('input-component') as HTMLInputElement
+    expect(input).not.toBeNull()
+    input.focus()
+    userEvent.tab()
+    utils.fireEvent.change(input, { target: { value: 'Stockport' } })
+    expect(mockOnchangeInput).toHaveBeenCalledTimes(2)
+    utils.fireEvent.click(document.body)
+    expect(mockOnBlur).toHaveBeenCalledTimes(1)
   })
 })
