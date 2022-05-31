@@ -60,7 +60,7 @@ export const SearchProvider: React.FC<ISearchContextProps> = ({ children }) => {
 
   const getLocationsList = async (term: string) => {
     const response = await GetLocationsList(
-      `https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&s0lrRows=6&solrTerm:${term}`,
+      `https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&s0lrRows=6&solrTerm=${term}`,
     )
     setLocationsList(response.results.docs)
   }
