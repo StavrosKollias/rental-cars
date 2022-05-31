@@ -38,6 +38,7 @@
         min-width: 3rem;
         text-align: center;
         font-size: $small;
+        color: $black;
       }
 
       .location {
@@ -56,19 +57,27 @@
 
         &-badge {
           &-T {
-            background-color: #0071c2;
+            background-color: $light-blue;
           }
 
           &-A {
-            background-color: #ff8000;
+            background-color: $orange;
           }
 
           &-C {
-            background-color: #0071c2;
+            background-color: $light-blue;
           }
 
           &-I {
-            background-color: #f1c74c;
+            background-color: $yorange;
+          }
+
+          &-G {
+            background-color: $green;
+          }
+          &-Z {
+            background-color: $dark-gray;
+            color: $white;
           }
         }
       }

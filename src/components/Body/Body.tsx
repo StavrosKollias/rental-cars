@@ -4,9 +4,12 @@ import { Header } from '../Header'
 import { Banner } from '../Banner'
 import { SearchBar } from '../SearchBar'
 import { ListOfBenefits } from '../ListOfBenefits'
+import { InputCheckBox } from '../Shared/InputCheckBox'
+import { Label } from '../Shared/Label'
+import { Labels } from '../../constants/Labels'
 
 export const Body: React.FC = () => {
-  const { locationsList, content, setDropOffLocationFlag } = useSearchContext()
+  const { locationsList, content, setDropOffLocationFlag, dropOffLocationFlag } = useSearchContext()
 
   return (
     <div className="body" data-testid="body">
@@ -17,8 +20,14 @@ export const Body: React.FC = () => {
           <ListOfBenefits content={content.pageContnet.benefits} />
           <SearchBar />
 
-          <div>
-            <input type="checkbox" onChange={(event) => setDropOffLocationFlag(event.target.checked)} />
+          <div className="txt-white">
+            <InputCheckBox
+              value={'false'}
+              label={Labels.checkboxDifferentDropoffLocation.label}
+              {...Labels.checkboxDifferentDropoffLocation.input}
+              checked={dropOffLocationFlag}
+              onChange={(event) => setDropOffLocationFlag(!dropOffLocationFlag)}
+            />
           </div>
         </div>
       </Banner>

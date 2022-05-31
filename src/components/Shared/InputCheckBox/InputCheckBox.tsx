@@ -26,7 +26,7 @@ export const InputCheckBox: React.FC<IInputCheckBoxProps> = ({
         checked={checked}
         name={name}
         autoComplete={autoComplete}
-        onChange={(event) => onChange(event.target.value)}
+        onChange={(event) => onChange(event.target)}
       />
       <Label {...label} />
     </div>

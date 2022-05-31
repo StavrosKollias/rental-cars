@@ -30,7 +30,7 @@ export const Input: React.FC<IInputProps> = ({
         name={name}
         autoComplete={autoComplete}
         onChange={(event) => onChange(event.target.value)}
-        onBlur={(event) => onBlur()}
+        onBlur={(event) => onBlur(event)}
       />
     </div>
   )

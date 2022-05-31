@@ -24,6 +24,7 @@ export const SearchLocation: React.FC<ISearchLocationProps> = ({
       onClick={() => {
         focusRef.current && focusRef.current.focus()
         focusRef.current.select()
+        locationList.length > 0 && setListState(true)
       }}
     >
       <span data-testid="search-icon-container">
@@ -36,7 +37,14 @@ export const SearchLocation: React.FC<ISearchLocationProps> = ({
         label={content.label}
         value={selectedLocation}
         onChange={hanldleLocationSearch}
-        onBlur={() => setListState(false)}
+        onBlur={(event) => {
+          event.stopPropagation()
+          requestAnimationFrame(() => {
+            if (!document.activeElement.classList.contains('location-list-container__list-item')) {
+              setListState(false)
+            }
+          })
+        }}
       />
       {listState && (
         <LocationList

@@ -163,7 +163,7 @@ describe('SearchLocation', () => {
     expect(listItems.length).toBe(locationListprops.length)
 
     utils.fireEvent.click(listItems[0])
-    expect(mockSetListState).toHaveBeenCalledTimes(1)
+    expect(mockSetListState).toHaveBeenCalledTimes(2)
     expect(mockSetSelectedLocation).toHaveBeenCalledTimes(1)
   })
 })

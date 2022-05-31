@@ -1,5 +1,5 @@
 import { ISearchLocationContent } from '../../constants/Labels/ILabels'
-import { ILocationItem } from '../../contexts/SearchContext/ISearchContext'
+import { ILocationItem } from '../../contexts/SearchContext'
 
 export interface ISearchLocationProps {
   locationList?: Array<ILocationItem>

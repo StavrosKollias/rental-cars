@@ -1,0 +1,13 @@
+.list-of-benefits-container {
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: $big;
+  padding: 1rem 0;
+
+  @media (min-width: $desktop) {
+    flex-direction: row;
+    align-items: center;
+  }
+}

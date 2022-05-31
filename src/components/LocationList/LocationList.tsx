@@ -1,18 +1,6 @@
 import React from 'react'
 import { ILocationListProps } from './'
 
-// placeType="A airport, C city, T train, I Region"
-
-// airport info = name type A iata
-// city, region , country
-
-// city info = name
-// then  region, country
-
-// region info = name  country
-
-// train = name  then City Region country
-
 export const LocationList: React.FC<ILocationListProps> = ({ locations, selectedValue, setSelectedValue }) => {
   const getPlaceType = (type: string) => {
     switch (type) {
@@ -22,9 +10,12 @@ export const LocationList: React.FC<ILocationListProps> = ({ locations, selected
         return 'City'
       case 'T':
         return 'Train'
-
       case 'I':
         return 'Region'
+      case 'G':
+        return 'District'
+      case 'Z':
+        return 'Place'
     }
   }
 
@@ -41,14 +32,17 @@ export const LocationList: React.FC<ILocationListProps> = ({ locations, selected
           const selectedClass = selectedValueElement === selectedValue ? 'selected' : ''
           const noResults = getStringFromArray([name, iata]) == 'No results found'
           return noResults ? (
-            <li className="location-not-found">{getStringFromArray([name, iata])}</li>
+            <li key={i} className="location-not-found">
+              {getStringFromArray([name, iata])}
+            </li>
           ) : (
             <li
               key={i}
               tabIndex={0}
               data-testid="location-list__item"
               className={`location-list-container__list-item ${selectedClass}`}
-              onClick={() => {
+              onClick={(event) => {
+                event.stopPropagation()
                 setSelectedValue(selectedValueElement)
               }}
               onKeyDown={(event) => {

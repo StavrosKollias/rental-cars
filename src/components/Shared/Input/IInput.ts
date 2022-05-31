@@ -11,5 +11,5 @@ export interface IInputProps {
   id: string
   label: ILabelProps
   onChange: (value: string) => void
-  onBlur?: () => void
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
 }
