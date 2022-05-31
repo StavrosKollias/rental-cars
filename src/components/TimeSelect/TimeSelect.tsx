@@ -4,7 +4,7 @@ import { ClockIcon } from '../../assets/Icons'
 import { Select } from '../Shared/Select'
 import { getTimesArray } from '../../utils'
 
-export const TimeSelect: React.FC<ITimeSelectProps> = ({ content, className = '', selectedTime, setTime }) => {
+export const TimeSelect: React.FC<ITimeSelectProps> = ({ content, selectedTime, setTime, className = '' }) => {
   const selectRef = React.useRef<HTMLSelectElement>(null)
   const selectOptions: Array<string> = getTimesArray(content.select.timeGap)
 

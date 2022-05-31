@@ -1,7 +1,13 @@
-.search-bar{
+.search-bar {
   display: flex;
+  flex-direction: column;
   background-color: $orange;
+  gap: 8px;
   padding: 8px;
   border-radius: 8px;
-  box-shadow: 0 calc(4px/2) calc(4px*3) $black
+  box-shadow: 0 calc(4px / 2) calc(4px * 3) $black;
+
+  @media (min-width: $desktop) {
+    flex-direction: row;
+  }
 }

@@ -1,6 +1,6 @@
-body{
+body {
   margin: 0;
-  font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto, Helvetica,Arial,sans-serif;
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
 h1,
@@ -10,36 +10,35 @@ h4,
 h5,
 h6,
 p {
-    margin-top: 0;
-    margin-bottom: 0;
-    color: $white;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: $white;
 }
 
 figure {
-    margin: 0;
+  margin: 0;
 }
 
 ol,
 ul {
-    padding-left: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 
-    li {
-        list-style-type: none;
-    }
+  li {
+    list-style-type: none;
+  }
 }
 
-input{
+input {
   padding: 0;
   border: none;
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
 
-
-select{
+select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -47,6 +46,6 @@ select{
   outline: none;
 }
 
-h1{
-  font-size:2.22rem
+h1 {
+  font-size: 2.22rem;
 }

@@ -1,11 +1,11 @@
-.hero-banner{
+.hero-banner {
   margin-bottom: 3rem;
   min-height: 50rem;
-  background-image: linear-gradient($light-blue,$black),url("../images/background-large.jpg");
+  background-image: linear-gradient($light-blue, $black), url('../images/background-large.jpg');
   background-position: 50%;
   background-size: cover;
 
-  h1{
-    font-size: $large
+  h1 {
+    font-size: $large;
   }
 }

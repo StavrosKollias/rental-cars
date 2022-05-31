@@ -1,27 +1,25 @@
-.select-container{
+.select-container {
   width: 100%;
-  @extend .flex;
-  @extend .flex-column;
+  display: flex;
+  flex-direction: column;
 
-  
-
-  &__select{
+  &__select {
     padding: 2.1rem 0.1rem 1rem 2.2rem;
     border-radius: $input-border-radious;
     z-index: 1;
     background: transparent;
 
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
 
-  &__label{
+  &__label {
     position: absolute;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-bold;
     font-size: $small;
     color: $txt-gray;
   }

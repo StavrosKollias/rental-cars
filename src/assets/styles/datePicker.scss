@@ -1,0 +1,27 @@
+.date-picker {
+  display: flex;
+  align-items: center;
+  background: $white;
+  background-color: $white;
+  border-radius: $input-border-radious;
+  width: 100%;
+
+  &:focus-within,
+  &:focus {
+    box-shadow: 0 0 0 3px rgb(18 115 196 / 24%);
+  }
+
+  label {
+    font-size: $small !important;
+  }
+
+  input[type='date']::-webkit-inner-spin-button,
+  input[type='date']::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+
+  span {
+    @extend .input-icons;
+  }
+}

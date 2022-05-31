@@ -38,22 +38,20 @@ const dropOffDateInput = {
   id: 'date-dropOff__input',
   ariaLabel: 'Drop-off Date',
   ariaRequired: 'true',
-  className: 'input-date',
   name: 'Drop-off Date',
   autoComplete: 'off',
 }
 
 const pickUpDateLabel = {
   htmlfor: 'date-pickUp__input',
-  labelContext: 'Pick Up Date',
+  labelContext: 'Pick-up Date',
 }
 
 const pickUpDateInput = {
   type: 'date',
   id: 'date-pickUp__input',
-  ariaLabel: 'Pick Up Date',
+  ariaLabel: 'Pick-up Date',
   ariaRequired: 'true',
-  className: 'input-date',
   name: 'Pick Up Date',
   autoComplete: 'off',
 }
@@ -61,7 +59,7 @@ const pickUpDateInput = {
 const pickUpTimeSelect = {
   id: 'select-pick-up__time',
   label: 'Time',
-  ariaLabel: 'Pick up time',
+  ariaLabel: 'Pick-up time',
   name: 'select-pick-up__time',
   timeGap: 30,
 }

@@ -1,0 +1,22 @@
+.btn {
+  border: none;
+  font-weight: $font-weight-bold;
+  font-size: $big;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease-in;
+  cursor: pointer;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &-success {
+    background-color: $green;
+    color: $white;
+
+    &:hover {
+      background-color: darken($green, 5%);
+    }
+  }
+}

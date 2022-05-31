@@ -5,11 +5,14 @@ import { App } from './components/App'
 import { SearchProvider } from './contexts/SearchContext/SearchContext'
 import './assets/styles/index.scss'
 
-ReactDom.render(
+// After
+import { createRoot } from 'react-dom/client'
+const container = document.getElementById('root')
+const root = createRoot(container) // createRoot(container!) if you use TypeScript
+root.render(
   <React.StrictMode>
     <SearchProvider>
       <App />
     </SearchProvider>
   </React.StrictMode>,
-  document.getElementById('root'),
 )

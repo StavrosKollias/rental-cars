@@ -4,10 +4,10 @@ import { SearchIcon } from '../../assets/Icons'
 import { Input } from '../Shared/Input'
 
 export const SearchLocation: React.FC<ISearchLocationProps> = ({
-  className = '',
   selectedLocation,
   setSelectedLocation,
   content,
+  className = '',
 }) => {
   const hangleChangeIpnutLocation = (value: string) => {
     setSelectedLocation(value)
